@@ -14,6 +14,8 @@ contract MontePlatform is ERC20, ERC20Burnable, Pausable, AccessControl {
 
     mapping(address => bool) internal _fullLockList;
 
+    event fullLockEvent(address indexed account, bool isLocked);
+
     constructor() ERC20("Monte Marketing Platform Coin", "MMPC") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
@@ -40,11 +42,13 @@ contract MontePlatform is ERC20, ERC20Burnable, Pausable, AccessControl {
 
     function fullLockAddress(address account) external onlyRole(LOCK_TRANSFER_ROLE) returns (bool) {
         _fullLockList[account] = true;
+        emit fullLockEvent(account , true);
         return true;
     }
 
     function unFullLockAddress(address account) external onlyRole(LOCK_TRANSFER_ROLE) returns (bool) {
         delete _fullLockList[account];
+        emit fullLockEvent(account , false);
         return true;
     }
 
