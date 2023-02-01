@@ -19,11 +19,8 @@ contract MontePlatform is ERC20, ERC20Burnable, Pausable, AccessControl {
     constructor() ERC20("Monte Marketing Platform Coin", "MMPC") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
-        uint256 _total = 1* 10 ** 8 * 10 ** decimals();
-        _mint(0x489dBD9f82b7FD2f9eD5DE4414571a2fe9E3DE10, _total/4);
-        _mint(0xCE5162513C77B83625304fbC0dc008b80A54365d, _total/4);
-        _mint(0x17fECD6ba3BfFC5bde9f85AD29c839e044Fe43Ca, _total/4);
-        _mint(0x7F495Eae30634b335e09eAabD130bEDFd68d59AC, _total/4);
+        // After contract issuance, Minting is planned using TimeLock contract
+        //uint256 _total = 1* 10 ** 8 * 10 ** decimals();
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(LOCK_TRANSFER_ROLE, msg.sender);
     }
