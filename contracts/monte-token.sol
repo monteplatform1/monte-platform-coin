@@ -16,7 +16,7 @@ contract MontePlatform is ERC20, ERC20Burnable, Pausable, AccessControl {
 
     event fullLockEvent(address indexed account, bool isLocked);
 
-    constructor() ERC20("Monte Marketing Platform Coin", "MMPC") {
+    constructor() ERC20("Monte Marketing Platform Coin", "MONTE") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
         // After contract issuance, Minting is planned using TimeLock contract
